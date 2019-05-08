@@ -2,14 +2,14 @@
 
 [![Build Status](https://travis-ci.org/github.com/itchannel/graylognotifications.svg?branch=master)](https://travis-ci.org/github.com/itchannel/graylognotifications)
 
-__Use this paragraph to enter a description of your plugin.__
+__A Graylog plugin to allow for pushover intergration. This plugin is designed to allow quick sending of alarm notifications to pushover users or groups.__
 
 **Required Graylog version:** 2.0 and later
 
 Installation
 ------------
 
-[Download the plugin](https://github.com/github.com/itchannel/graylognotifications/releases)
+[Download the plugin](https://github.com/itchannel/graylognotifications/releases)
 and place the `.jar` file in your Graylog plugin directory. The plugin directory
 is the `plugins/` folder relative from your `graylog-server` directory by default
 and can be configured in your `graylog.conf` file.
@@ -30,7 +30,11 @@ dramatically by making use of hot reloading. To do this, do the following:
 Usage
 -----
 
-__Use this paragraph to document the usage of your plugin__
+__The following information is required in order to use the plugin:
+
+* Pushover API Key
+* Pushover Group ID or User ID
+__
 
 
 Getting started

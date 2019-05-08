@@ -28,9 +28,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:github.com/itchannel/graylognotifications.git</connection>
-        <developerConnection>scm:git:git@github.com:github.com/itchannel/graylognotifications.git</developerConnection>
-        <url>https://github.com/github.com/itchannel/graylognotifications</url>
+        <connection>scm:git:git@github.com:itchannel/graylognotifications.git</connection>
+        <developerConnection>scm:git:git@github.com:/itchannel/graylognotifications.git</developerConnection>
+        <url>https://github.com/itchannel/graylognotifications</url>
         <tag>HEAD</tag>
     </scm>
 
