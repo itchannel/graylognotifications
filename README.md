@@ -1,6 +1,6 @@
 # Notifications Plugin for Graylog
 
-__A Graylog plugin to allow for pushover intergration. This plugin is designed to allow quick sending of alarm notifications to pushover users or groups.__
+A Graylog plugin to allow for pushover intergration. This plugin is designed to allow quick sending of alarm notifications to pushover users or groups.
 
 **Required Graylog version:** 2.0 and later
 
@@ -46,15 +46,3 @@ This project is using Maven 3 and requires Java 8 or higher.
 * Copy generated JAR file in target directory to your Graylog plugin directory.
 * Restart the Graylog.
 
-Plugin Release
---------------
-
-We are using the maven release plugin:
-
-```
-$ mvn release:prepare
-[...]
-$ mvn release:perform
-```
-
-This sets the version numbers, creates a tag and pushes to GitHub. Travis CI will build the release artifacts and upload to GitHub automatically.
