@@ -1,7 +1,5 @@
 # Notifications Plugin for Graylog
 
-[![Build Status](https://travis-ci.org/github.com/itchannel/graylognotifications.svg?branch=master)](https://travis-ci.org/github.com/itchannel/graylognotifications)
-
 __A Graylog plugin to allow for pushover intergration. This plugin is designed to allow quick sending of alarm notifications to pushover users or groups.__
 
 **Required Graylog version:** 2.0 and later
@@ -30,11 +28,11 @@ dramatically by making use of hot reloading. To do this, do the following:
 Usage
 -----
 
-__The following information is required in order to use the plugin:
+The following information is required in order to use the plugin:
 
 * Pushover API Key
 * Pushover Group ID or User ID
-__
+
 
 
 Getting started
