@@ -40,5 +40,10 @@ public class PushNotificationModule extends PluginModule {
          *
          * addConfigBeans();
          */
+
+        addNotificationType(PushNotificationConfig.TYPE_NAME,
+                PushNotificationConfig.class,
+                PushNotification.class,
+                PushNotification.Factory.class);
     }
 }

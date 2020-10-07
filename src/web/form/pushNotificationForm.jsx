@@ -54,7 +54,7 @@ class PushNotificationForm extends React.Component {
                        label="User/Group Token"
                        type="text"
                        bsStyle={validation.errors.user_token ? 'error' : null}
-                       help={lodash.get(validation, 'errors.user_token[0]', <>Bot Token from <a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a></>)}
+                       help={lodash.get(validation, 'errors.user_token[0]', 'User/Group Token')}
                        value={config.user_token || ''}
                        onChange={this.handleChange}
                        required />
@@ -74,7 +74,7 @@ class PushNotificationForm extends React.Component {
                        label="Priority Number"
                        type="text"
                        bsStyle={validation.errors.priority_token ? 'error' : null}
-                       help={lodash.get(validation, 'errors.priority_token[0]', '')}
+                       help={lodash.get(validation, 'errors.priority_token[0]', 'Priority value for notification')}
                        value={config.priority_token|| ''}
                        onChange={this.handleChange} />
 
