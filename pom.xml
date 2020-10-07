@@ -3,17 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.graylog.plugins</groupId>
         <artifactId>graylog-plugin-web-parent</artifactId>
-        <version>3.0.0-alpha.3-SNAPSHOT</version>
+        <version>3.3.6</version>
         <relativePath>../graylog2-server/graylog-plugin-parent/graylog-plugin-web-parent</relativePath>
     </parent>
 
     <groupId>com.itchannel</groupId>
     <artifactId>graylog-plugin-push-notification</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>3.3.6</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -42,48 +41,10 @@
         <!-- Plugins will not be deployed by default - set to `false` if you actually want to deploy it -->
         <maven.deploy.skip>true</maven.deploy.skip>
 
-        <graylog.version>${project.parent.version}</graylog.version>
+        <graylog.version>3.3.6</graylog.version>
         <graylog.plugin-dir>/usr/share/graylog-server/plugin</graylog.plugin-dir>
     </properties>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
-    <repositories>
-        <!-- to make our snapshot releases work with Travis et al -->
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>sonatype-nexus-releases</id>
-            <name>Sonatype Nexus Releases</name>
-            <url>https://oss.sonatype.org/content/repositories/releases</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
@@ -91,14 +52,6 @@
             <artifactId>graylog2-server</artifactId>
             <version>${graylog.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- Include source from test-jar to reuse test classes. -->
-        <dependency>
-            <groupId>org.graylog2</groupId>
-            <artifactId>graylog2-server</artifactId>
-            <version>${graylog.version}</version>
-            <type>test-jar</type>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -121,7 +74,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
+                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifestEntries>
