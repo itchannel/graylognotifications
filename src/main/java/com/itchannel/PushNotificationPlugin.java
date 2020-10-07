@@ -13,6 +13,7 @@ import java.util.Collections;
 public class PushNotificationPlugin implements Plugin {
     @Override
     public PluginMetaData metadata() {
+
         return new PushNotificationMetaData();
     }
 

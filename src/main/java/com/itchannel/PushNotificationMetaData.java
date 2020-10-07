@@ -42,7 +42,7 @@ public class PushNotificationMetaData implements PluginMetaData {
     @Override
     public String getDescription() {
         // TODO Insert correct plugin description
-        return "Description of PushNotification plugin";
+        return "Allows you to send alerts to Pushover";
     }
 
     @Override

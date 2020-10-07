@@ -46,7 +46,7 @@ public abstract class PushNotificationConfig implements EventNotificationConfig 
 
 
 
-    @JsonIgnore
+    @Override @JsonIgnore
     public JobTriggerData toJobTriggerData(EventDto dto) {
         return EventNotificationExecutionJob.Data.builder().eventDto(dto).build();
     }
@@ -55,7 +55,7 @@ public abstract class PushNotificationConfig implements EventNotificationConfig 
         return Builder.create();
     }
 
-    @JsonIgnore
+    @Override @JsonIgnore
     public ValidationResult validate() {
         final ValidationResult validation = new ValidationResult();
         if (userToken().isEmpty()) {
