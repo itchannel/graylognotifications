@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { ControlLabel, FormGroup, HelpBlock } from 'react-bootstrap';
 import lodash from 'lodash';
 
-import MultiSelect from './components/MultiSelect';
 import Input from './components/Input';
 import FormsUtils from './utils/FormUtils';
 
