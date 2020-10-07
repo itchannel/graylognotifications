@@ -21,7 +21,7 @@ import org.graylog.events.contentpack.entities.EventNotificationConfigEntity;
 @JsonTypeName(PushNotificationConfig.TYPE_NAME)
 @JsonDeserialize(builder = PushNotificationConfig.Builder.class)
 public abstract class PushNotificationConfig implements EventNotificationConfig {
-    public static final String TYPE_NAME = "pushnotification-v2";
+    public static final String TYPE_NAME = "push-notifications-v2";
     private static final String FIELD_USER_TOKEN = "user_token";
     private static final String FIELD_API_TOKEN = "api_token";
     private static final String FIELD_PRIORITY_TOKEN = "priority_token";
