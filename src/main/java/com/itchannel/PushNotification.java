@@ -81,6 +81,7 @@ public class PushNotification implements EventNotification {
         final PushNotificationConfig config = (PushNotificationConfig) ctx.notificationConfig();
         ImmutableList<MessageSummary> backlog = notificationCallbackService.getBacklogForEvent(ctx);
         final Map<String, Object> model = getModel(ctx, backlog, config);
+        
 
 
         try {
@@ -91,10 +92,18 @@ public class PushNotification implements EventNotification {
             con.setDoOutput(true);
             OutputStream os = con.getOutputStream();
             String message = buildMessage(config.messageField(), model);
+            String priority = "";
             if (message == "") {
                 message = "This is a test";
             }
-            String POST_PARAMS = "token=" + config.apiToken() + "&user=" + config.userToken() + "&html=1&title=" + "TEST" + "&message=" + message;
+            if (config.priorityToken() == "")
+            {
+                priority = "0";
+            }else
+            {
+                priority = config.priorityToken();
+            }
+            String POST_PARAMS = "token=" + config.apiToken() + "&user=" + config.userToken() + "&priority=" + priority + "&html=1&title=" + model.get("event_definition_title") + "&message=" + message;
             os.write(POST_PARAMS.getBytes(Charset.forName("UTF-8")));
             os.flush();
             os.close();
