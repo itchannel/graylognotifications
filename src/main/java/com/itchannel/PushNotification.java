@@ -103,7 +103,7 @@ public class PushNotification implements EventNotification {
             {
                 priority = config.priorityToken();
             }
-            String POST_PARAMS = "token=" + config.apiToken() + "&user=" + config.userToken() + "&priority=" + priority + "&html=1&title=" + model.get("event_definition_title") + "&message=" + message;
+            String POST_PARAMS = "token=" + config.apiToken() + "&user=" + config.userToken() + "&priority=" + priority + "&html=1&title=" + model.get("event_definition_title") + "&message=" + URLEncoder.encode(message, "UTF-8");
             os.write(POST_PARAMS.getBytes(Charset.forName("UTF-8")));
             os.flush();
             os.close();
