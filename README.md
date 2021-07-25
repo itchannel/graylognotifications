@@ -2,7 +2,10 @@
 
 A Graylog plugin to allow for pushover intergration. This plugin is designed to allow quick sending of alarm notifications to pushover users or groups.
 
-**Required Graylog version:** 2.0 and later
+## Beta support for 4.0
+Plugin works with 4.0 but I have fully rewritten the codebase to no longer be a "Legacy" callback so there may be small bugs. 
+
+**Required Graylog version:** 3.0 and later
 
 Installation
 ------------

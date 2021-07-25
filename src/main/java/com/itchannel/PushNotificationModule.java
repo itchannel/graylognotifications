@@ -1,8 +1,7 @@
-package notifications;
+package com.itchannel;
 
 import org.graylog2.plugin.PluginConfigBean;
 import org.graylog2.plugin.PluginModule;
-import notifications.Notifications;
 
 import java.util.Collections;
 import java.util.Set;
@@ -10,7 +9,7 @@ import java.util.Set;
 /**
  * Extend the PluginModule abstract class here to add you plugin to the system.
  */
-public class NotificationsModule extends PluginModule {
+public class PushNotificationModule extends PluginModule {
     /**
      * Returns all configuration beans required by this plugin.
      *
@@ -23,8 +22,6 @@ public class NotificationsModule extends PluginModule {
 
     @Override
     protected void configure() {
-
-        addAlarmCallback(Notifications.class);
         /*
          * Register your plugin types here.
          *
@@ -43,5 +40,10 @@ public class NotificationsModule extends PluginModule {
          *
          * addConfigBeans();
          */
+
+        addNotificationType(PushNotificationConfig.TYPE_NAME,
+                PushNotificationConfig.class,
+                PushNotification.class,
+                PushNotification.Factory.class);
     }
 }

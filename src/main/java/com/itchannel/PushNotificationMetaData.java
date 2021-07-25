@@ -1,4 +1,4 @@
-package notifications;
+package com.itchannel;
 
 import org.graylog2.plugin.PluginMetaData;
 import org.graylog2.plugin.ServerStatus;
@@ -11,27 +11,27 @@ import java.util.Set;
 /**
  * Implement the PluginMetaData interface here.
  */
-public class NotificationsMetaData implements PluginMetaData {
-    private static final String PLUGIN_PROPERTIES = "itchannel.graylog-plugin-pushnotifications/graylog-plugin.properties";
+public class PushNotificationMetaData implements PluginMetaData {
+    private static final String PLUGIN_PROPERTIES = "com.itchannel.graylog-plugin-push-notification/graylog-plugin.properties";
 
     @Override
     public String getUniqueId() {
-        return "notifications.NotificationsPlugin";
+        return "com.itchannel.PushNotificationPlugin";
     }
 
     @Override
     public String getName() {
-        return "Notifications";
+        return "PushNotification";
     }
 
     @Override
     public String getAuthor() {
-        return "Steve <steve@itchannel.me>";
+        return "Steve <graylog@itchannel.me>";
     }
 
     @Override
     public URI getURL() {
-        return URI.create("https://github.com/github.com/itchannel/graylognotifications");
+        return URI.create("https://github.com/graylogpushover");
     }
 
     @Override
@@ -42,7 +42,7 @@ public class NotificationsMetaData implements PluginMetaData {
     @Override
     public String getDescription() {
         // TODO Insert correct plugin description
-        return "Description of Notifications plugin";
+        return "Allows you to send alerts to Pushover";
     }
 
     @Override

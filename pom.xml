@@ -3,17 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.graylog.plugins</groupId>
         <artifactId>graylog-plugin-web-parent</artifactId>
-        <version>3.0.1-SNAPSHOT</version>
+        <version>3.3.6</version>
         <relativePath>../graylog2-server/graylog-plugin-parent/graylog-plugin-web-parent</relativePath>
     </parent>
 
-    <groupId>itchannel</groupId>
-    <artifactId>graylog-plugin-pushnotifications</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>com.itchannel</groupId>
+    <artifactId>graylog-plugin-push-notification</artifactId>
+    <version>3.3.6</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -22,31 +21,29 @@
 
     <developers>
         <developer>
-            <name>itchannel</name>
-            <email>steve@itchannel.me</email>
+            <name>Steve</name>
+            <email>graylog@itchannel.me</email>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:itchannel/graylognotifications.git</connection>
-        <developerConnection>scm:git:git@github.com:/itchannel/graylognotifications.git</developerConnection>
-        <url>https://github.com/itchannel/graylognotifications</url>
+        <connection>scm:git:git@github.com:graylogpushover.git</connection>
+        <developerConnection>scm:git:git@github.com:graylogpushover.git</developerConnection>
+        <url>https://github.com/graylogpushover</url>
         <tag>HEAD</tag>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
+	      <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
         <!-- Plugins will not be deployed by default - set to `false` if you actually want to deploy it -->
         <maven.deploy.skip>true</maven.deploy.skip>
-
-        <graylog.version>${project.parent.version}</graylog.version>
+	<jackson.version>2.10.2</jackson.version>
+        <graylog.version>3.3.6</graylog.version>
         <graylog.plugin-dir>/usr/share/graylog-server/plugin</graylog.plugin-dir>
     </properties>
-
-    <distributionManagement>
+<distributionManagement>
         <snapshotRepository>
             <id>sonatype-nexus-snapshots</id>
             <name>Sonatype Nexus Snapshots</name>
@@ -60,7 +57,6 @@
     </distributionManagement>
 
     <repositories>
-        <!-- to make our snapshot releases work with Travis et al -->
         <repository>
             <id>sonatype-nexus-snapshots</id>
             <name>Sonatype Nexus Snapshots</name>
@@ -92,11 +88,17 @@
             <version>${graylog.version}</version>
             <scope>provided</scope>
         </dependency>
+	<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <resources>
-            <resource><directory>build</directory></resource>
+            <resource><directory>${web.build-dir}</directory></resource>
             <resource>
               <directory>src/main/resources</directory>
               <filtering>true</filtering>
@@ -113,7 +115,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
+                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifestEntries>
@@ -122,7 +124,13 @@
                     </archive>
                 </configuration>
             </plugin>
-
+		<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.8.1</version>
+<configuration>
+	</configuration>
+		</plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

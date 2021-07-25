@@ -1,4 +1,4 @@
-package notifications;
+package com.itchannel;
 
 import org.graylog2.plugin.Plugin;
 import org.graylog2.plugin.PluginMetaData;
@@ -10,14 +10,15 @@ import java.util.Collections;
 /**
  * Implement the Plugin interface here.
  */
-public class NotificationsPlugin implements Plugin {
+public class PushNotificationPlugin implements Plugin {
     @Override
     public PluginMetaData metadata() {
-        return new NotificationsMetaData();
+
+        return new PushNotificationMetaData();
     }
 
     @Override
     public Collection<PluginModule> modules () {
-        return Collections.<PluginModule>singletonList(new NotificationsModule());
+        return Collections.<PluginModule>singletonList(new PushNotificationModule());
     }
 }
