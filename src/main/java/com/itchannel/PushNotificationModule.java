@@ -6,6 +6,8 @@ import org.graylog2.plugin.PluginModule;
 import java.util.Collections;
 import java.util.Set;
 
+import com.itchannel.entities.PushEventNotificationConfigEntity;
+
 /**
  * Extend the PluginModule abstract class here to add you plugin to the system.
  */
@@ -44,6 +46,8 @@ public class PushNotificationModule extends PluginModule {
         addNotificationType(PushNotificationConfig.TYPE_NAME,
                 PushNotificationConfig.class,
                 PushNotification.class,
-                PushNotification.Factory.class);
+                PushNotification.Factory.class,
+                PushEventNotificationConfigEntity.TYPE_NAME,
+                PushEventNotificationConfigEntity.class);
     }
 }

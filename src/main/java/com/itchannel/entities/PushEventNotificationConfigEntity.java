@@ -16,9 +16,9 @@ import javax.validation.constraints.NotBlank;
 import java.util.Map;
 
 @AutoValue
-@JsonTypeName(PushNotificationConfigEntity.TYPE_NAME)
-@JsonDeserialize(builder = PushNotificationConfigEntity.Builder.class)
-public abstract class PushNotificationConfigEntity implements EventNotificationConfigEntity {
+@JsonTypeName(PushEventNotificationConfigEntity.TYPE_NAME)
+@JsonDeserialize(builder = PushEventNotificationConfigEntity.Builder.class)
+public abstract class PushEventNotificationConfigEntity implements EventNotificationConfigEntity {
 
     public static final String TYPE_NAME = "pushnotification-v2";
     private static final String FIELD_USER_TOKEN = "user_token";
