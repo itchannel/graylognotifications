@@ -54,7 +54,7 @@ public abstract class PushEventNotificationConfigEntity implements EventNotifica
 
         @JsonCreator
         public static Builder create() {
-            return new AutoValue_PushNotificationConfigEntity.Builder()
+            return new AutoValue_PushEventNotificationConfigEntity.Builder()
                     .type(TYPE_NAME);
         }
 
@@ -69,7 +69,7 @@ public abstract class PushEventNotificationConfigEntity implements EventNotifica
 
         @JsonProperty(FIELD_MESSAGE)
         public abstract Builder messageField(ValueReference messageField);
-        public abstract PushNotificationConfigEntity build();
+        public abstract PushEventNotificationConfigEntity build();
 
 
     }

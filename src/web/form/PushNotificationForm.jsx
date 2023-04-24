@@ -6,7 +6,7 @@ import lodash from 'lodash';
 import Input from './components/Input';
 import FormsUtils from './utils/FormUtils';
 
-const DEFAULT_MESSAGE_TEMPLATE = "[${stream.title}](${stream_url}): ${alert_condition.title}\n" +
+const DEFAULT_MESSAGE_TEMPLATE = "${event_definition_title}\n" +
     "\n" +
     "${foreach backlog message}\n" +
     "${message.message}\n\\n" +
