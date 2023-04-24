@@ -1,10 +1,9 @@
 # PushNotification Plugin for Graylog
 
-[![Build Status](https://travis-ci.org/graylogpushover.svg?branch=master)](https://travis-ci.org/graylogpushover)
 
 __Use this paragraph to enter a description of your plugin.__
 
-**Required Graylog version:** 2.0 and later
+**Required Graylog version:** 4.0 and later
 
 Installation
 ------------
@@ -43,6 +42,8 @@ This project is using Maven 3 and requires Java 8 or higher.
 * Optional: Run `mvn jdeb:jdeb` and `mvn rpm:rpm` to create a DEB and RPM package respectively.
 * Copy generated JAR file in target directory to your Graylog plugin directory.
 * Restart the Graylog.
+
+**Ensure you have backlog messages set in the event otherwise the notifications will be blank**
 
 Plugin Release
 --------------
