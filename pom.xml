@@ -12,7 +12,7 @@
 
     <groupId>com.itchannel</groupId>
     <artifactId>graylog-plugin-push-notification</artifactId>
-    <version>2.0.1</version>
+    <version>2.0.2</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
