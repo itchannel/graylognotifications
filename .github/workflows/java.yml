@@ -5,15 +5,14 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'  
-      - name: Graylog version
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'  
+    - name: Graylog version
       id: vinfo
       run: |
         export GRAYLOG_VERSION=$(xmllint --xpath '/*[local-name()="project"]/*[local-name()="parent"]/*[local-name()="version"]/text()' pom.xml)
@@ -21,14 +20,14 @@ jobs:
         echo "GRAYLOG_VERSION=${GRAYLOG_VERSION}" >> $GITHUB_ENV
         echo "::set-output name=GRAYLOG_VERSION::$GRAYLOG_VERSION"
         echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
-      - name: Build
-        run: mvn -B package --file pom.xml
-      - name: Package deb
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: mvn jdeb:jdeb
-      - name: Package rpm
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: mvn rpm:rpm
-      - name: Cleanup
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: rm -f target/original-*.jar
+    - name: Build
+      run: mvn -B package --file pom.xml
+    - name: Package deb
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: mvn jdeb:jdeb
+    - name: Package rpm
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: mvn rpm:rpm
+    - name: Cleanup
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: rm -f target/original-*.jar
