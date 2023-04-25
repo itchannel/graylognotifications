@@ -12,6 +12,23 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'
-      - name: Build with Maven
-        run: mvn package
+          distribution: 'temurin'  
+      - name: Graylog version
+      id: vinfo
+      run: |
+        export GRAYLOG_VERSION=$(xmllint --xpath '/*[local-name()="project"]/*[local-name()="parent"]/*[local-name()="version"]/text()' pom.xml)
+        echo "Building for Graylog ${GRAYLOG_VERSION}"
+        echo "GRAYLOG_VERSION=${GRAYLOG_VERSION}" >> $GITHUB_ENV
+        echo "::set-output name=GRAYLOG_VERSION::$GRAYLOG_VERSION"
+        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+      - name: Build
+        run: mvn -B package --file pom.xml
+      - name: Package deb
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: mvn jdeb:jdeb
+      - name: Package rpm
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: mvn rpm:rpm
+      - name: Cleanup
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: rm -f target/original-*.jar
