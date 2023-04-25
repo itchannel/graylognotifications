@@ -12,6 +12,14 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'  
+    - name: Graylog version
+      id: vinfo
+      run: |
+        export GRAYLOG_VERSION=$(xmllint --xpath '/*[local-name()="project"]/*[local-name()="parent"]/*[local-name()="version"]/text()' pom.xml)
+        echo "Building for Graylog ${GRAYLOG_VERSION}"
+        echo "GRAYLOG_VERSION=${GRAYLOG_VERSION}" >> $GITHUB_ENV
+        echo "::set-output name=GRAYLOG_VERSION::$GRAYLOG_VERSION"
+        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
     - uses: actions/cache@v3
       id: cache
       with:
@@ -28,14 +36,6 @@ jobs:
         yarn install
         env disable_plugins=true ./node_modules/.bin/webpack --config webpack.vendor.js
         popd; popd
-    - name: Graylog version
-      id: vinfo
-      run: |
-        export GRAYLOG_VERSION=$(xmllint --xpath '/*[local-name()="project"]/*[local-name()="parent"]/*[local-name()="version"]/text()' pom.xml)
-        echo "Building for Graylog ${GRAYLOG_VERSION}"
-        echo "GRAYLOG_VERSION=${GRAYLOG_VERSION}" >> $GITHUB_ENV
-        echo "::set-output name=GRAYLOG_VERSION::$GRAYLOG_VERSION"
-        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
     - name: Build
       run: mvn -B package --file pom.xml
     - name: Package deb
