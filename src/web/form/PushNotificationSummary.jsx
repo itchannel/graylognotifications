@@ -19,10 +19,6 @@ class PushNotificationSummary extends React.Component {
         return (
             <CommonNotificationSummary {...this.props}>
                 <React.Fragment>
-                    {/*<tr>
-            <td>Bot Token</td>
-            <td>{notification.config.bot_token}</td>
-          </tr>*/}
                     <tr>
                         <td>User/Group Token</td>
                         <td>{notification.config.user_token}</td>
