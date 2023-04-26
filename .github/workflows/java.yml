@@ -40,6 +40,8 @@ jobs:
         yarn install
         env disable_plugins=true ./node_modules/.bin/webpack --config webpack.vendor.js
         popd; popd
+    - name: Missing deps
+      run: npm install react-bootstrap-validation --save
     - name: Build
       run: mvn -B package --file pom.xml
     - name: Package deb
