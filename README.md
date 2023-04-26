@@ -19,12 +19,8 @@ Development
 -----------
 
 You can improve your development experience for the web interface part of your plugin
-dramatically by making use of hot reloading. To do this, do the following:
+dramatically by making use of hot reload
 
-* `git clone https://github.com/Graylog2/graylog2-server.git`
-* `cd graylog2-server/graylog2-web-interface`
-* `ln -s $YOURPLUGIN plugin/`
-* `npm install && npm start`
 
 Usage
 -----

@@ -21,6 +21,6 @@
   },
   "devDependencies": {
     "graylog-web-plugin": "file:../graylog2-server/graylog2-web-interface/packages/graylog-web-plugin",
-    "react": "^16.13.1"
+    "react": "^18"
   }
 }
