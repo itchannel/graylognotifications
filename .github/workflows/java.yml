@@ -12,6 +12,8 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'  
+    - name: Install prereq
+      run: sudo apt-get install libxml2-utils
     - name: Graylog version
       id: vinfo
       run: |
