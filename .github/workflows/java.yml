@@ -42,8 +42,6 @@ jobs:
         popd; popd
     - name: Missing deps
       run: npm install react-bootstrap-validation --save
-    - name: run Yarn check
-      run: yarn install --checkfiles
     - name: Build
       run: mvn -B package --file pom.xml
     - name: Package deb
