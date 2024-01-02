@@ -10,6 +10,9 @@ const PushNotificationDetails = ({ notification}) => {
         <ReadOnlyFormGroup label="API Token" value={notification.config.api_token} />
         <ReadOnlyFormGroup label="Message" value={notification.config.message_field} />
         <ReadOnlyFormGroup label="Priority" value={notification.config.priority_token} />
+        <ReadOnlyFormGroup label="Retry" value={notification.config.retry_token} />
+        <ReadOnlyFormGroup label="Expire" value={notification.config.expire_token} />
+        <ReadOnlyFormGroup label="Sound" value={notification.config.sound_token} />
       </>
     );
 };

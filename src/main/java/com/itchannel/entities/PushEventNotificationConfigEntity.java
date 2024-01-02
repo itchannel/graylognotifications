@@ -24,6 +24,9 @@ public abstract class PushEventNotificationConfigEntity implements EventNotifica
     private static final String FIELD_USER_TOKEN = "user_token";
     private static final String FIELD_API_TOKEN = "api_token";
     private static final String FIELD_PRIORITY_TOKEN = "priority_token";
+    private static final String FIELD_RETRY_TOKEN = "retry_token";
+    private static final String FIELD_EXPIRE_TOKEN = "expire_token";
+    private static final String FIELD_SOUND_TOKEN = "sound_token";
     private static final String FIELD_MESSAGE = "message_field";
 
     @JsonProperty(FIELD_USER_TOKEN)
@@ -37,6 +40,17 @@ public abstract class PushEventNotificationConfigEntity implements EventNotifica
     @JsonProperty(FIELD_PRIORITY_TOKEN)
     @NotBlank
     public abstract ValueReference priorityToken();
+
+    @JsonProperty(FIELD_RETRY_TOKEN)
+    @NotBlank
+    public abstract ValueReference retryToken();
+
+    @JsonProperty(FIELD_EXPIRE_TOKEN)
+    @NotBlank
+    public abstract ValueReference expireToken();
+
+    @JsonProperty(FIELD_SOUND_TOKEN)
+    public abstract ValueReference soundToken();
 
     @JsonProperty(FIELD_MESSAGE)
     @NotBlank
@@ -67,6 +81,15 @@ public abstract class PushEventNotificationConfigEntity implements EventNotifica
         @JsonProperty(FIELD_PRIORITY_TOKEN)
         public abstract Builder priorityToken(ValueReference priorityToken);
 
+        @JsonProperty(FIELD_RETRY_TOKEN)
+        public abstract Builder retryToken(ValueReference retryToken);
+
+        @JsonProperty(FIELD_EXPIRE_TOKEN)
+        public abstract Builder expireToken(ValueReference expireToken);
+
+        @JsonProperty(FIELD_SOUND_TOKEN)
+        public abstract Builder soundToken(ValueReference soundToken);
+
         @JsonProperty(FIELD_MESSAGE)
         public abstract Builder messageField(ValueReference messageField);
         public abstract PushEventNotificationConfigEntity build();
@@ -81,6 +104,9 @@ public abstract class PushEventNotificationConfigEntity implements EventNotifica
                 .userToken(userToken().asString(parameters))
                 .apiToken(apiToken().asString(parameters))
                 .priorityToken(priorityToken().asString(parameters))
+                .retryToken(retryToken().asString(parameters))
+                .expireToken(expireToken().asString(parameters))
+                .soundToken(soundToken().asString(parameters))
                 .messageField(messageField().asString(parameters))
                 .build();
 

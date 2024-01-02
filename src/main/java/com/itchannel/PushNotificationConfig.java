@@ -14,7 +14,7 @@ import org.graylog.events.notifications.EventNotificationExecutionJob;
 import org.graylog.scheduler.JobTriggerData;
 import org.graylog2.contentpacks.model.entities.references.ValueReference;
 import javax.validation.constraints.NotBlank;
-import com.itchannel.entities.PushNotificationConfigEntity;
+import com.itchannel.entities.PushEventNotificationConfigEntity;
 import org.graylog.events.contentpack.entities.EventNotificationConfigEntity;
 
 @AutoValue
@@ -25,6 +25,9 @@ public abstract class PushNotificationConfig implements EventNotificationConfig 
     private static final String FIELD_USER_TOKEN = "user_token";
     private static final String FIELD_API_TOKEN = "api_token";
     private static final String FIELD_PRIORITY_TOKEN = "priority_token";
+    private static final String FIELD_RETRY_TOKEN = "retry_token";
+    private static final String FIELD_EXPIRE_TOKEN = "expire_token";
+    private static final String FIELD_SOUND_TOKEN = "sound_token";
     private static final String FIELD_MESSAGE = "message_field";
 
     @JsonProperty(FIELD_USER_TOKEN)
@@ -38,6 +41,18 @@ public abstract class PushNotificationConfig implements EventNotificationConfig 
     @JsonProperty(FIELD_PRIORITY_TOKEN)
     @NotBlank
     public abstract String priorityToken();
+
+    @JsonProperty(FIELD_RETRY_TOKEN)
+    @NotBlank
+    public abstract String retryToken();
+
+    @JsonProperty(FIELD_EXPIRE_TOKEN)
+    @NotBlank
+    public abstract String expireToken();
+
+    @JsonProperty(FIELD_SOUND_TOKEN)
+    @NotBlank
+    public abstract String soundToken();
 
     @JsonProperty(FIELD_MESSAGE)
     @NotBlank
@@ -95,6 +110,15 @@ public abstract class PushNotificationConfig implements EventNotificationConfig 
         @JsonProperty(FIELD_PRIORITY_TOKEN)
         public abstract Builder priorityToken(String priorityToken);
 
+        @JsonProperty(FIELD_RETRY_TOKEN)
+        public abstract Builder retryToken(String retryToken);
+
+        @JsonProperty(FIELD_EXPIRE_TOKEN)
+        public abstract Builder expireToken(String expireToken);
+
+        @JsonProperty(FIELD_SOUND_TOKEN)
+        public abstract Builder soundToken(String soundToken);
+
         @JsonProperty(FIELD_MESSAGE)
         public abstract Builder messageField(String messageField);
 
@@ -103,10 +127,13 @@ public abstract class PushNotificationConfig implements EventNotificationConfig 
 
     @Override
     public EventNotificationConfigEntity toContentPackEntity(EntityDescriptorIds entityDescriptorIds) {
-        return PushNotificationConfigEntity.builder()
+        return PushEventNotificationConfigEntity.builder()
                 .userToken(ValueReference.of(userToken()))
                 .apiToken(ValueReference.of(apiToken()))
                 .priorityToken(ValueReference.of(priorityToken()))
+                .retryToken(ValueReference.of(retryToken()))
+                .expireToken(ValueReference.of(expireToken()))
+                .soundToken(ValueReference.of(soundToken()))
                 .messageField(ValueReference.of(messageField()))
                 .build();
     }

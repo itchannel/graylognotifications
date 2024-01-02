@@ -32,6 +32,18 @@ class PushNotificationSummary extends React.Component {
                         <td>{notification.config.priority_token}</td>
                     </tr>
                     <tr>
+                        <td>Message Retry</td>
+                        <td>{notification.config.retry_token}</td>
+                    </tr>
+                    <tr>
+                        <td>Message Expire</td>
+                        <td>{notification.config.expire_token}</td>
+                    </tr>
+                    <tr>
+                        <td>Message Sound</td>
+                        <td>{notification.config.sound_token}</td>
+                    </tr>
+                    <tr>
                         <td>Message</td>
                         <td>{notification.config.message_field}</td>
                     </tr>
