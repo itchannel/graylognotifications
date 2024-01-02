@@ -24,6 +24,9 @@ class PushNotificationForm extends React.Component {
         user_token: '',
         api_token: '',
         priority_token: '',
+        retry_token: '60',
+        expire_token: '1200',
+        sound_token: 'pushover',
         message_field: DEFAULT_MESSAGE_TEMPLATE,
     };
 
@@ -77,6 +80,32 @@ class PushNotificationForm extends React.Component {
                        value={config.priority_token|| ''}
                        onChange={this.handleChange} />
 
+                <Input id="notification-retry-token"
+                       name="retry_token"
+                       label="Retry in Seconds"
+                       type="text"
+                       bsStyle={validation.errors.retry_token ? 'error' : null}
+                       help={lodash.get(validation, 'errors.retry_token[0]', 'Retry seconds value for notification')}
+                       value={config.retry_token|| ''}
+                       onChange={this.handleChange} />
+
+                <Input id="notification-expire-token"
+                       name="expire_token"
+                       label="Expire in Seconds"
+                       type="text"
+                       bsStyle={validation.errors.expire_token ? 'error' : null}
+                       help={lodash.get(validation, 'errors.expire_token[0]', 'Expire seconds value for notification')}
+                       value={config.expire_token|| ''}
+                       onChange={this.handleChange} />
+
+                <Input id="notification-sound-token"
+                       name="sound_token"
+                       label="Notification Sound"
+                       type="text"
+                       bsStyle={validation.errors.sound_token ? 'error' : null}
+                       help={lodash.get(validation, 'errors.sound_token[0]', 'Notification Sound value for notification')}
+                       value={config.sound_token|| ''}
+                       onChange={this.handleChange} />
 
                 <Input id="notification-message-template"
                        name="message_field"

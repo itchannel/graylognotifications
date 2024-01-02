@@ -92,6 +92,9 @@ public class PushNotification implements EventNotification {
             OutputStream os = con.getOutputStream();
             String message = buildMessage(config.messageField(), model);
             String priority = "";
+            String retry = "";
+            String expire = "";
+            String sound = "";
             if (message == "") {
                 message = "This is a test";
             }
@@ -102,7 +105,25 @@ public class PushNotification implements EventNotification {
             {
                 priority = config.priorityToken();
             }
-            String POST_PARAMS = "token=" + config.apiToken() + "&user=" + config.userToken() + "&priority=" + priority + "&html=1&title=" + model.get("event_definition_title") + "&message=" + URLEncoder.encode(message, "UTF-8");
+            if (config.retryToken() == "")
+            {
+                retry = "60";
+            } else {
+                retry = config.retryToken();
+            }
+            if (config.expireToken() == "")
+            {
+                expire = "1200";
+            } else {
+                expire = config.expireToken();
+            }
+            if (config.soundToken() == "")
+            {
+                sound = "pushover";
+            } else {
+                sound = config.soundToken();
+            }
+            String POST_PARAMS = "token=" + config.apiToken() + "&user=" + config.userToken() + "&priority=" + priority + "&retry=" + retry + "&expire=" + expire + "&sound=" + sound + "&html=1&title=" + model.get("event_definition_title") + "&message=" + URLEncoder.encode(message, "UTF-8");
             os.write(POST_PARAMS.getBytes(Charset.forName("UTF-8")));
             os.flush();
             os.close();
